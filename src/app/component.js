@@ -1,4 +1,5 @@
 const Component = ({ props }) => {
+  console.log(props);
   return (
     <div key={props.id} className="card">
       <h2>

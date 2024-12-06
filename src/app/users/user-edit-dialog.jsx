@@ -12,27 +12,34 @@ import { Label } from "@/components/ui/label";
 import { Bodoni_Moda } from "next/font/google";
 import { useEffect, useState } from "react";
 
-export const UserEditDialog = ({ open, onClose, id }) => {
+export const UserEditDialog = ({ open, onClose, item }) => {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [mail, setMail] = useState("");
 
   async function submit() {
     console.log(id);
-    const response = await fetch(`http://localhost:3000/api/users/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        firstname: name,
-        lastname: lastname,
-        email: mail,
-        imageUrl: "http://dummyimage.com/117x116.png/cc0000/ffffff",
-      }),
-    });
+    const response = await fetch(
+      `http://localhost:3000/api/users/${item?.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          firstname: name,
+          lastname: lastname,
+          email: mail,
+          imageUrl: "http://dummyimage.com/117x116.png/cc0000/ffffff",
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
   }
 
-  useEffect(() => {});
+  useEffect(() => {
+    setName(item.firstname);
+    setLastname(item.lastname);
+    setMail(item.email);
+  }, [item]);
 
   return (
     <Dialog open={open} onOpenChange={onClose}>

@@ -92,7 +92,7 @@ export function UsersTable(props) {
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
                         onClick={() => {
-                          setSelected(item.id);
+                          setSelected(item);
                           setEditModalOpen(true);
                         }}
                       >
@@ -117,7 +117,7 @@ export function UsersTable(props) {
             <UserEditDialog
               open={editModalOpen}
               onClose={setEditModalOpen}
-              id={selected}
+              item={selected}
             />
           </TableBody>
         </Table>

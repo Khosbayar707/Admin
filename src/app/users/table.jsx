@@ -29,13 +29,22 @@ export function UsersTable(props) {
   const { data } = props;
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selected, setSelected] = useState("");
-  let sliceNumber = props.number;
+  const [newData, setNewData] = useState("");
+  const filderedData = data?.filter((item) =>
+    item.firstname.toLowerCase().includes(newData.toLowerCase())
+  );
 
+  let sliceNumber = props.number;
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
-        <Input placeholder="Нэрээр хайх..." className="max-w-sm" />
+        <Input
+          placeholder="Нэрээр хайх..."
+          className="max-w-sm"
+          onChange={(e) => setNewData(e.target.value)}
+        />
       </div>
+
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -51,7 +60,7 @@ export function UsersTable(props) {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {data?.slice(0, sliceNumber).map((item, index) => (
+            {filderedData?.slice(0, sliceNumber).map((item, index) => (
               <TableRow key={item.id}>
                 <TableCell>{index + 1}</TableCell>
                 <TableHead>

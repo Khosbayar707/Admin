@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const Users = () => {
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [data, setData] = useState([]);
-  const [sliced, setSliced] = useState(0);
+  const [sliced, setSliced] = useState(10);
 
   useEffect(() => {
     fetch("/api/users")

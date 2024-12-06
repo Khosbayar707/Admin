@@ -31,6 +31,9 @@ export const UserEditDialog = ({ open, onClose, id }) => {
     const data = await response.json();
     console.log(data);
   }
+
+  useEffect(() => {});
+
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
@@ -46,7 +49,7 @@ export const UserEditDialog = ({ open, onClose, id }) => {
                 console.log(name);
               }}
               id="name"
-              defaultValue={name}
+              value={name}
             />
           </div>
           <div className="grid gap-2">
@@ -57,7 +60,7 @@ export const UserEditDialog = ({ open, onClose, id }) => {
                 console.log(lastname);
               }}
               id="lastname"
-              defaultValue={lastname}
+              value={lastname}
             />
           </div>
           <div className="grid gap-2">
@@ -69,7 +72,7 @@ export const UserEditDialog = ({ open, onClose, id }) => {
                 console.log(mail);
               }}
               id="email"
-              defaultValue={mail}
+              value={mail}
             />
           </div>
         </div>

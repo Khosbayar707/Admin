@@ -18,7 +18,6 @@ export const UserEditDialog = ({ open, onClose, item }) => {
   const [mail, setMail] = useState("");
 
   async function submit() {
-    console.log(id);
     const response = await fetch(
       `http://localhost:3000/api/users/${item?.id}`,
       {
@@ -27,7 +26,6 @@ export const UserEditDialog = ({ open, onClose, item }) => {
           firstname: name,
           lastname: lastname,
           email: mail,
-          imageUrl: "http://dummyimage.com/117x116.png/cc0000/ffffff",
         }),
       }
     );
@@ -39,7 +37,7 @@ export const UserEditDialog = ({ open, onClose, item }) => {
     setName(item.firstname);
     setLastname(item.lastname);
     setMail(item.email);
-  }, [item]);
+  }, [item?.firstname, item?.lastname, item?.email]);
 
   return (
     <Dialog open={open} onOpenChange={onClose}>

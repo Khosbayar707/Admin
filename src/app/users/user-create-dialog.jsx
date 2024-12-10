@@ -24,7 +24,6 @@ export const UserCreateDialog = ({ open, onClose }) => {
         firstname: name,
         lastname: lastname,
         email: mail,
-        imageUrl: "http://dummyimage.com/117x116.png/cc0000/ffffff",
       }),
     });
     const data = await response.json();

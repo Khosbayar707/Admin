@@ -24,6 +24,7 @@ import { Input } from "@/components/ui/input";
 import { MoreHorizontal, Settings } from "lucide-react";
 import { UserEditDialog } from "./user-edit-dialog";
 import { useState } from "react";
+import Link from "next/link";
 
 export function UsersTable(props) {
   const { data } = props;
@@ -72,6 +73,13 @@ export function UsersTable(props) {
                 <TableHead>{item.firstname}</TableHead>
                 <TableHead>{item.lastname}</TableHead>
                 <TableHead>{item.email}</TableHead>
+                <TableHead>
+                  <Link href={`/users/${item.id}`}>
+                    <Button variant="ghost" className="w-20 h-8 p-0">
+                      More
+                    </Button>
+                  </Link>
+                </TableHead>
                 <TableHead className="w-1">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -80,6 +88,7 @@ export function UsersTable(props) {
                         <MoreHorizontal className="w-4 h-4" />
                       </Button>
                     </DropdownMenuTrigger>
+
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem
